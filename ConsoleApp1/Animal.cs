@@ -17,6 +17,8 @@ namespace Ranching
         public int saturation; // How full it is
         public bool male; // is it a male
         public string name = "NotListed";
+        public float makingMoney;
+        public float makingMoneyTemp;
         public Texture2D texture;
         Random random = new Random();
         int tempX;
@@ -86,8 +88,23 @@ namespace Ranching
         }
         public int Food(int food)
         {
+            food *= 120;
             saturation += food;
+            fatness++;
             return saturation;
+        }
+        public void Produce()
+        {
+            if(saturation > 0)
+            {
+                makingMoney = makingMoneyTemp * yield;
+            }
+            else
+            {
+                makingMoney = 0;
+                //Console.WriteLine("An Animal is hungry");
+                rl.DrawText("An Animal is hungry", 10, 350, 30, Color.BLACK);
+            }
         }
         public void Draw()
         {

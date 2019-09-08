@@ -16,6 +16,11 @@ namespace Ranching
             Player player = new Player();
             player.money = 500;
             List<Animal> farmAnimals = new List<Animal>();
+            
+            int howManyCow = 0;
+            int howManyChicken = 0;
+            int howManyHorse = 0;
+            int howManyPig = 0;
             //Cow's button
             Button cowButton = new Button();
             cowButton.Position.x = 600;
@@ -44,6 +49,16 @@ namespace Ranching
             pigButton.height = 50;
             pigButton.width = 100;
             pigButton.btnBounds = new Rectangle(pigButton.Position.x, pigButton.Position.y, pigButton.width, pigButton.height);
+            //feed button
+            Button foodButton = new Button();
+            foodButton.Position.x = 100;
+            foodButton.Position.y = 400;
+            foodButton.height = 50;
+            foodButton.width = 100;
+            foodButton.btnBounds = new Rectangle(foodButton.Position.x, foodButton.Position.y, foodButton.width, foodButton.height);
+
+            
+
             rl.InitWindow(screenWidth, screenHeight, "raylib [core] example - basic window");
 
             rl.SetTargetFPS(60);
@@ -54,21 +69,15 @@ namespace Ranching
             {
                 // Update
                 //----------------------------------------------------------------------------------
-                //foreach (Cow cow in farmAnimals)
-                //{
-                //    cow.texture = rl.LoadTexture("cow.png");
-                //}
+
 
                 // TODO: Update your variables here
                 //----------------------------------------------------------------------------------
                 cowButton.Update();
-                //foreach (Cow cow in farmAnimals)
-                //{
-                //    cow.RunUpdate();
-                //}
-                if (cowButton.buttonAction)
+                if (cowButton.buttonAction && player.money >= 50)
                 {
                     farmAnimals.Add(new Cow());
+                    player.money -= 50;
                 }
                 //horse
                 horseButton.Update();
@@ -76,62 +85,101 @@ namespace Ranching
                 foreach (var i in farmAnimals)
                 {
                     i.RunUpdate();
+                    i.Food();
+                    i.Produce();
+                    player.money += (i.makingMoney / 1200);
+
                     i.Draw();
                 }
-                if (horseButton.buttonAction)
+                if (horseButton.buttonAction && player.money >= 50)
                 {
                     farmAnimals.Add(new Horse());
+                    player.money -= 50;
                 }
                 //chicken
                 chickenButton.Update();
-                //foreach (Chicken chicken in farmAnimals)
-                //{
-                //    chicken.RunUpdate();
-                //}
-                if (chickenButton.buttonAction)
+                if (chickenButton.buttonAction && player.money >= 50)
                 {
                     farmAnimals.Add(new Chicken());
+                    player.money -= 50;
                 }
                 //pig
                 pigButton.Update();
-                //foreach (Pig pig in farmAnimals)
-                //{
-                //    pig.RunUpdate();
-                //}
-                if (pigButton.buttonAction)
+                if (pigButton.buttonAction && player.money >= 50)
                 {
                     farmAnimals.Add(new Pig());
+                    player.money -= 50;
                 }
+                foodButton.Update();
+                if (foodButton.buttonAction && player.money >= 10)
+                {
+                    foreach (var i in farmAnimals)
+                    {
+                        i.Food(50);
+                    }
+                    player.money -= 10;
+                }
+
+                // Sort
+                //----------------------------------------------------------------------------------
+                //Cow
+                if(rl.IsKeyDown(KeyboardKey.KEY_C))
+                {
+                    howManyCow = 0;
+                    foreach(Cow cow in farmAnimals)
+                    {
+                        howManyCow++;
+                    }
+                    rl.DrawText($"You have {howManyCow} Cows in the pin", 10, 300, 30, Color.BLACK);
+                }
+                //Chicken
+                if (rl.IsKeyDown(KeyboardKey.KEY_K))
+                {
+                    howManyChicken = 0;
+                    foreach (Chicken chicken in farmAnimals)
+                    {
+                        howManyChicken++;
+                    }
+                    rl.DrawText($"You have {howManyChicken} Chickens in the pin", 10, 300, 30, Color.BLACK);
+                }
+                //Horse
+                if (rl.IsKeyDown(KeyboardKey.KEY_H))
+                {
+                    howManyHorse = 0;
+                    foreach (Horse horse in farmAnimals)
+                    {
+                        howManyHorse++;
+                    }
+                    rl.DrawText($"You have {howManyHorse} Horses in the pin", 10, 300, 30, Color.BLACK);
+                }
+                //Pig
+                if (rl.IsKeyDown(KeyboardKey.KEY_P))
+                {
+                    howManyPig = 0;
+                    foreach (Pig pig in farmAnimals)
+                    {
+                        howManyPig++;
+                    }
+                    rl.DrawText($"You have {howManyPig} Pigs in the pin", 10, 300, 30, Color.BLACK);
+                }
+                //----------------------------------------------------------------------------------
                 // Draw
                 //----------------------------------------------------------------------------------
                 rl.BeginDrawing();
 
-                rl.ClearBackground(Color.RAYWHITE);
+                rl.ClearBackground(Color.GREEN);
 
                 cowButton.Draw();
-                //foreach(Cow cow in farmAnimals)
-                //{
-                //    cow.Draw();
-                //}
                 ////horse
                 horseButton.Draw();
-                //foreach (Horse horse in farmAnimals)
-                //{
-                //    horse.Draw();
-                //}
                 ////chicken
                 chickenButton.Draw();
-                //foreach (Chicken chicken in farmAnimals)
-                //{
-                //    chicken.Draw();
-                //}
                 ////Pig
                 pigButton.Draw();
-                //foreach (Pig pig in farmAnimals)
-                //{
-                //    pig.Draw();
-                //}
-                //rl.DrawText("Congrats! You created your first window!", 190, 200, 20, Color.LIGHTGRAY);
+
+                foodButton.Draw();
+
+                rl.DrawText($"You have ${player.money}", 10, 10, 30, Color.BLACK);
 
                 rl.EndDrawing();
                 //----------------------------------------------------------------------------------

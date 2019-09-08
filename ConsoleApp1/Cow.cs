@@ -19,6 +19,8 @@ namespace Ranching
             fatness = random.Next(3, 15);
             moveTime = random.Next(25, 50);
             texture = cowTexture;
+            saturation *= 120;
+            makingMoneyTemp = 10;
         }
         
     }
@@ -35,6 +37,8 @@ namespace Ranching
             fatness = random.Next(1, 5);
             moveTime = random.Next(25, 50);
             texture = chickenTexture;
+            saturation *= 120;
+            makingMoneyTemp = 20;
         }
 
     }
@@ -51,6 +55,8 @@ namespace Ranching
             fatness = random.Next(3, 15);
             moveTime = random.Next(25, 50);
             texture = horseTexture;
+            saturation *= 120;
+            makingMoneyTemp = 30;
         }
 
     }
@@ -67,6 +73,8 @@ namespace Ranching
             fatness = random.Next(3, 10);
             moveTime = random.Next(25, 50);
             texture = pigTexture;
+            saturation *= 120;
+            makingMoneyTemp = 40;
         }
 
     }
