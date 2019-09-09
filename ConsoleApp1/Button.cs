@@ -6,6 +6,8 @@ using rl = Raylib.Raylib;
 
 namespace Ranching
 {
+    // Copy from https://www.raylib.com/examples/web/textures/loader.html?name=textures_sprite_button 
+    //and changed to C# from C++
     class Button
     {
         int buttonState = 0;

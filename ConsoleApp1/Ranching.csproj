@@ -13,6 +13,9 @@
     <None Include="Bindings\Raylib.shproj" />
   </ItemGroup>
   <ItemGroup>
+    <None Update="Animals.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="chicken.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -29,6 +32,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="raylib.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SaveData.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

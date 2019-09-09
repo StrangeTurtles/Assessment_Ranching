@@ -9,7 +9,7 @@ namespace Ranching
     class Cow : Animal
     {
         Random random = new Random();
-        static Texture2D cowTexture = rl.LoadTexture("cow.png");
+        public static Texture2D cowTexture;
         public Cow()
         {
             age = random.Next(5);
@@ -21,13 +21,31 @@ namespace Ranching
             texture = cowTexture;
             saturation *= 120;
             makingMoneyTemp = 10;
+            name = "Cow";
+            textureName = "cow.png";
         }
-        
+
+        public Cow(int _age, int _speed, int _yield,int _saturation, int _fatness, int _moveTime, float _X, float _Y, float _makingMoney)
+        {
+            age = _age;
+            speed = _speed;
+            yield = _yield;
+            saturation = _saturation;
+            fatness = _fatness;
+            moveTime = _moveTime;
+            texture = cowTexture;
+            Position.x = _X;
+            Position.y = _Y;
+            makingMoneyTemp = _makingMoney;
+            name = "Cow";
+            textureName = "cow.png";
+        }
+
     }
     class Chicken : Animal
     {
         Random random = new Random();
-        static Texture2D chickenTexture = rl.LoadTexture("chicken.png");
+        public static Texture2D chickenTexture;
         public Chicken()
         {
             age = random.Next(3);
@@ -39,13 +57,29 @@ namespace Ranching
             texture = chickenTexture;
             saturation *= 120;
             makingMoneyTemp = 20;
+            name = "Chicken";
+            textureName = "chicken.png";
         }
-
+        public Chicken(int _age, int _speed, int _yield, int _saturation, int _fatness, int _moveTime, float _X, float _Y, float _makingMoney)
+        {
+            age = _age;
+            speed = _speed;
+            yield = _yield;
+            saturation = _saturation;
+            fatness = _fatness;
+            moveTime = _moveTime;
+            texture = chickenTexture;
+            Position.x = _X;
+            Position.y = _Y;
+            makingMoneyTemp = _makingMoney;
+            name = "Chicken";
+            textureName = "chicken.png";
+        }
     }
     class Horse : Animal
     {
         Random random = new Random();
-        static Texture2D horseTexture = rl.LoadTexture("horse.png");
+        public static Texture2D horseTexture;
         public Horse()
         {
             age = random.Next(15);
@@ -57,13 +91,29 @@ namespace Ranching
             texture = horseTexture;
             saturation *= 120;
             makingMoneyTemp = 30;
+            name = "Horse";
+            textureName = "horse.png";
         }
-
+        public Horse(int _age, int _speed, int _yield, int _saturation, int _fatness, int _moveTime, float _X, float _Y, float _makingMoney)
+        {
+            age = _age;
+            speed = _speed;
+            yield = _yield;
+            saturation = _saturation;
+            fatness = _fatness;
+            moveTime = _moveTime;
+            texture = horseTexture;
+            Position.x = _X;
+            Position.y = _Y;
+            makingMoneyTemp = _makingMoney;
+            name = "Horse";
+            textureName = "horse.png";
+        }
     }
     class Pig : Animal
     {
         Random random = new Random();
-        static Texture2D pigTexture = rl.LoadTexture("pig.png");
+        public static Texture2D pigTexture;
         public Pig()
         {
             age = random.Next(5);
@@ -75,7 +125,24 @@ namespace Ranching
             texture = pigTexture;
             saturation *= 120;
             makingMoneyTemp = 40;
+            name = "Pig";
+            textureName = "pig.png";
         }
-
+        public Pig(int _age, int _speed, int _yield, int _saturation, int _fatness, int _moveTime, float _X, float _Y, float _makingMoney)
+        {
+            age = _age;
+            speed = _speed;
+            yield = _yield;
+            saturation = _saturation;
+            fatness = _fatness;
+            moveTime = _moveTime;
+            texture = pigTexture;
+            Position.x = _X;
+            Position.y = _Y;
+            makingMoneyTemp = _makingMoney;
+            name = "Pig";
+            textureName = "pig.png";
+        }
     }
 }
+

@@ -20,6 +20,7 @@ namespace Ranching
         public float makingMoney;
         public float makingMoneyTemp;
         public Texture2D texture;
+        public string textureName;
         Random random = new Random();
         int tempX;
         int tempY;
@@ -27,6 +28,11 @@ namespace Ranching
         bool start = true;
         int screenWidth = 800;
         int screenHeight = 450;
+
+        //public static Texture2D cowTexture = rl.LoadTexture("cow.png");
+        //public static Texture2D chickenTexture = rl.LoadTexture("chicken.png");
+        //public static Texture2D horseTexture = rl.LoadTexture("horse.png");
+        //public static Texture2D pigTexture = rl.LoadTexture("pig.png");
 
         public void NewRand()
         {
