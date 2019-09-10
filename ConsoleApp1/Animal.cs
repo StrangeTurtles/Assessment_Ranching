@@ -64,21 +64,24 @@ namespace Ranching
             }
             if (moveTime > 0)
             {
-                if (tempY == 2)
+                if (saturation > 0)
                 {
-                    Position.y--;
-                }
-                if (tempY == 1)
-                {
-                    Position.y++;
-                }
-                if (tempX == 2)
-                {
-                    Position.x--;
-                }
-                if (tempX == 1)
-                {
-                    Position.x++;
+                    if (tempY == 2)
+                    {
+                        Position.y--;
+                    }
+                    if (tempY == 1)
+                    {
+                        Position.y++;
+                    }
+                    if (tempX == 2)
+                    {
+                        Position.x--;
+                    }
+                    if (tempX == 1)
+                    {
+                        Position.x++;
+                    }
                 }
             }
             else
@@ -108,7 +111,7 @@ namespace Ranching
             else
             {
                 makingMoney = 0;
-                //Console.WriteLine("An Animal is hungry");
+                saturation = 0;
                 rl.DrawText("An Animal is hungry", 10, 350, 30, Color.BLACK);
             }
         }

@@ -6,7 +6,7 @@ namespace Ranching
 {
     class Player
     {
-        public float money;
+        public double money;
         public int currentSpace = 0;
         public int maxSpace = 50;
     }
