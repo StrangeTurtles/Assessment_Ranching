@@ -8,6 +8,10 @@ namespace Ranching
 {
     static class Program
     {
+        /// <summary>
+        /// This will load saved animals
+        /// </summary>
+        /// <returns></returns>
         static List<Animal> LoadAnimals()
         {
             List<Animal> animals = new List<Animal>();
@@ -40,7 +44,7 @@ namespace Ranching
                 float float1;
                 float float2;
                 float float3;
-
+                //checks if the name (which is what animal it is) is Cow
                 if (tmpValues[0] == "Cow")
                 {
                     int.TryParse(tmpValues[2], out int1);
@@ -54,6 +58,7 @@ namespace Ranching
                     float.TryParse(tmpValues[10], out float3);
                     animals.Add(new Cow(int1, int2, int3, int4, int5, int6, float1, float2, float3));
                 }
+                //checks if the name (which is what animal it is) is Chicken
                 if (tmpValues[0] == "Chicken")
                 {
                     int.TryParse(tmpValues[2], out int1);
@@ -67,6 +72,7 @@ namespace Ranching
                     float.TryParse(tmpValues[10], out float3);
                     animals.Add(new Chicken(int1, int2, int3, int4, int5, int6, float1, float2, float3));
                 }
+                //checks if the name (which is what animal it is) is Horse
                 if (tmpValues[0] == "Horse")
                 {
                     int.TryParse(tmpValues[2], out int1);
@@ -80,6 +86,7 @@ namespace Ranching
                     float.TryParse(tmpValues[10], out float3);
                     animals.Add(new Horse(int1, int2, int3, int4, int5, int6, float1, float2, float3));
                 }
+                //checks if the name (which is what animal it is) is Pig
                 if (tmpValues[0] == "Pig")
                 {
                     int.TryParse(tmpValues[2], out int1);
@@ -93,12 +100,15 @@ namespace Ranching
                     float.TryParse(tmpValues[10], out float3);
                     animals.Add(new Pig(int1, int2, int3, int4, int5, int6, float1, float2, float3));
                 }
-
-
             }
             return animals;
         }
-
+        /// <summary>
+        /// This will save all the Animals
+        /// that you buy in the game, 
+        /// when you exit the game.
+        /// </summary>
+        /// <param name="animals"></param>
         static void SaveData(List<Animal> animals)
         {
             StreamWriter writer = new StreamWriter("Animals.csv");
@@ -122,7 +132,10 @@ namespace Ranching
 
             writer.Close();
         }
-
+        /// <summary>
+        /// Genrates a random int between 50 to 150
+        /// </summary>
+        /// <returns></returns>
         static int NewRandNum()
         {
             Random random = new Random();
@@ -135,19 +148,23 @@ namespace Ranching
         {
             // Initialization
             //--------------------------------------------------------------------------------------
+            //The Animal class does not have this so if you change this then 
+            //you have to change it in the animal class to
+            //######################################################################################
             int screenWidth = 800;
             int screenHeight = 450;
+            //######################################################################################
             Player player = new Player();
             player.money = 0.0;
             List<Animal> farmAnimals = new List<Animal>();
-            
+            //Varables that hold a int of how many <Animals>
             int howManyCow = 0;
             int howManyChicken = 0;
             int howManyHorse = 0;
             int howManyPig = 0;
             int howManyAnimals = 0;
             int howManyHungry = 0;
-
+            //Varables that hold the cost
             int foodCost = 1;
             int cowCost = 5;
             int chickenCost = 50;
@@ -155,7 +172,7 @@ namespace Ranching
             int pigCost = 5000;
             
             
-
+            //Loads the cost and player money
             StreamReader reader = new StreamReader("SaveData.txt");
             while (!reader.EndOfStream)
             {
@@ -219,7 +236,7 @@ namespace Ranching
             foodButton.height = 50;
             foodButton.width = 100;
             foodButton.btnBounds = new Rectangle(foodButton.Position.x, foodButton.Position.y, foodButton.width, foodButton.height);
-            //Sell
+            //"Sell" button 
             Button sellButton = new Button();
             sellButton.Position.x = 125;
             sellButton.Position.y = 150;
@@ -233,7 +250,7 @@ namespace Ranching
             rl.SetTargetFPS(60);
 
             
-
+            //The Textures of the saved animals
             Cow.cowTexture = rl.LoadTexture("cow.png");
             Chicken.chickenTexture = rl.LoadTexture("chicken.png");
             Horse.horseTexture = rl.LoadTexture("horse.png");
@@ -268,6 +285,7 @@ namespace Ranching
 
                 foodCost = howManyHungry * 2;
                 howManyAnimals = 0;
+                //Buttons check if the button is active
                 //Cow
                 cowButton.Update();
                 if (cowButton.buttonAction && player.money >= cowCost)
@@ -300,6 +318,7 @@ namespace Ranching
                     player.money -= pigCost;
                     pigCost += 500;
                 }
+                //food
                 foodButton.Update();
                 if (foodButton.buttonAction && player.money >= foodCost)
                 {
@@ -315,11 +334,14 @@ namespace Ranching
                     player.money -= foodCost;
                     foodCost = 0;
                 }
+                //sell
                 sellButton.Update();
                 if(sellButton.buttonAction)
                 {
                     player.money += 0.1;
                 }
+                //This is for rounding the player's money 
+                //to two places after the decimal
                 double tmpmoney;
                 tmpmoney = player.money;
                 tmpmoney *= 100;
@@ -330,6 +352,7 @@ namespace Ranching
 
                 // Sort
                 //----------------------------------------------------------------------------------
+                //if a key is pressed then show how many animals there are
                 //Cow
                 if(rl.IsKeyDown(KeyboardKey.KEY_C))
                 {
@@ -405,8 +428,6 @@ namespace Ranching
 
                 
                 rl.DrawText($"You have ${tmpmoney}", 10, 10, 30, Color.BLACK);
-                
-
                 rl.DrawText($"Cow: ${cowCost}", 600, 75, 30, Color.BLACK);
                 rl.DrawText($"Chicken: ${chickenCost}", 600, 175, 30, Color.BLACK);
                 rl.DrawText($"Horse: ${horseCost}", 600, 275, 30, Color.BLACK);
@@ -418,7 +439,7 @@ namespace Ranching
 
             // De-Initialization
             //--------------------------------------------------------------------------------------
-
+            //saves the cost and players money
             StreamWriter writer = new StreamWriter("SaveData.txt");
             
             writer.WriteLine(player.money);

@@ -6,10 +6,16 @@ using rl = Raylib.Raylib;
 
 namespace Ranching
 {
+    /// <summary>
+    /// Makes a new cow or loads a saved one
+    /// </summary>
     class Cow : Animal
     {
         Random random = new Random();
         public static Texture2D cowTexture;
+        /// <summary>
+        /// Make random stats for new cow
+        /// </summary>
         public Cow()
         {
             age = random.Next(5);
@@ -24,7 +30,18 @@ namespace Ranching
             name = "Cow";
             textureName = "cow.png";
         }
-
+        /// <summary>
+        /// Loads Cow with deturmed stats
+        /// </summary>
+        /// <param name="_age"></param>
+        /// <param name="_speed"></param>
+        /// <param name="_yield"></param>
+        /// <param name="_saturation"></param>
+        /// <param name="_fatness"></param>
+        /// <param name="_moveTime"></param>
+        /// <param name="_X"></param>
+        /// <param name="_Y"></param>
+        /// <param name="_makingMoney"></param>
         public Cow(int _age, int _speed, int _yield,int _saturation, int _fatness, int _moveTime, float _X, float _Y, float _makingMoney)
         {
             age = _age;
@@ -46,6 +63,9 @@ namespace Ranching
     {
         Random random = new Random();
         public static Texture2D chickenTexture;
+        /// <summary>
+        /// Makes a new Chicken with random stats
+        /// </summary>
         public Chicken()
         {
             age = random.Next(3);
@@ -60,6 +80,18 @@ namespace Ranching
             name = "Chicken";
             textureName = "chicken.png";
         }
+        /// <summary>
+        /// Loads a chicken with deturmed stats
+        /// </summary>
+        /// <param name="_age"></param>
+        /// <param name="_speed"></param>
+        /// <param name="_yield"></param>
+        /// <param name="_saturation"></param>
+        /// <param name="_fatness"></param>
+        /// <param name="_moveTime"></param>
+        /// <param name="_X"></param>
+        /// <param name="_Y"></param>
+        /// <param name="_makingMoney"></param>
         public Chicken(int _age, int _speed, int _yield, int _saturation, int _fatness, int _moveTime, float _X, float _Y, float _makingMoney)
         {
             age = _age;
@@ -80,6 +112,9 @@ namespace Ranching
     {
         Random random = new Random();
         public static Texture2D horseTexture;
+        /// <summary>
+        /// makes a new horse with random stats
+        /// </summary>
         public Horse()
         {
             age = random.Next(15);
@@ -94,6 +129,18 @@ namespace Ranching
             name = "Horse";
             textureName = "horse.png";
         }
+        /// <summary>
+        /// Loads a horse deturmed stats
+        /// </summary>
+        /// <param name="_age"></param>
+        /// <param name="_speed"></param>
+        /// <param name="_yield"></param>
+        /// <param name="_saturation"></param>
+        /// <param name="_fatness"></param>
+        /// <param name="_moveTime"></param>
+        /// <param name="_X"></param>
+        /// <param name="_Y"></param>
+        /// <param name="_makingMoney"></param>
         public Horse(int _age, int _speed, int _yield, int _saturation, int _fatness, int _moveTime, float _X, float _Y, float _makingMoney)
         {
             age = _age;
@@ -114,6 +161,9 @@ namespace Ranching
     {
         Random random = new Random();
         public static Texture2D pigTexture;
+        /// <summary>
+        /// Makes a new pig with random stats
+        /// </summary>
         public Pig()
         {
             age = random.Next(5);
@@ -128,6 +178,18 @@ namespace Ranching
             name = "Pig";
             textureName = "pig.png";
         }
+        /// <summary>
+        /// Loads a pig with deturmed stats
+        /// </summary>
+        /// <param name="_age"></param>
+        /// <param name="_speed"></param>
+        /// <param name="_yield"></param>
+        /// <param name="_saturation"></param>
+        /// <param name="_fatness"></param>
+        /// <param name="_moveTime"></param>
+        /// <param name="_X"></param>
+        /// <param name="_Y"></param>
+        /// <param name="_makingMoney"></param>
         public Pig(int _age, int _speed, int _yield, int _saturation, int _fatness, int _moveTime, float _X, float _Y, float _makingMoney)
         {
             age = _age;

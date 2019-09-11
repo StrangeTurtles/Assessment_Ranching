@@ -8,6 +8,9 @@ namespace Ranching
 {
     // Copy from https://www.raylib.com/examples/web/textures/loader.html?name=textures_sprite_button 
     //and changed to C# from C++
+    /// <summary>
+    /// Makes a button
+    /// </summary>
     class Button
     {
         int buttonState = 0;
@@ -20,6 +23,7 @@ namespace Ranching
         public Color myColor = Color.BEIGE;
         public void Update()
         {
+            //Locates where the mouse is on the screen
             mousePoint = rl.GetMousePosition();
             buttonAction = false;  // Button state: 0-NORMAL, 1-MOUSE_HOVER, 2-PRESSED
 

@@ -16,7 +16,7 @@ namespace Ranching
         public int fatness; // how fat it is
         public int saturation; // How full it is
         public bool male; // is it a male
-        public bool hungry = false;
+        public bool hungry = false; // if it is hungry
         public string name = "NotListed";
         public float makingMoney;
         public float makingMoneyTemp;
@@ -29,12 +29,11 @@ namespace Ranching
         bool start = true;
         int screenWidth = 800;
         int screenHeight = 450;
-
-        //public static Texture2D cowTexture = rl.LoadTexture("cow.png");
-        //public static Texture2D chickenTexture = rl.LoadTexture("chicken.png");
-        //public static Texture2D horseTexture = rl.LoadTexture("horse.png");
-        //public static Texture2D pigTexture = rl.LoadTexture("pig.png");
-
+        
+        
+        /// <summary>
+        /// Makes a random int that will be used to deturmen where the animal will move
+        /// </summary>
         public void NewRand()
         {
             tempX = random.Next(3);
@@ -42,11 +41,13 @@ namespace Ranching
         }
         public void RunUpdate()
         {
+            // gives a random deriton to start
             if(start)
             {
                 NewRand();
                 start = false;
             }
+            //Screen Wrap
             if (Position.x > screenWidth)
             {
                 Position.x = -30;
@@ -63,28 +64,31 @@ namespace Ranching
             {
                 Position.y = screenHeight;
             }
-            if (moveTime > 0)
+            //if the time is not up, and
+            //the animal is not hungry
+            //then the animal can move 
+            if (moveTime > 0 && saturation > 0)
             {
-                if (saturation > 0)
+                
+                if (tempY == 2)
                 {
-                    if (tempY == 2)
-                    {
-                        Position.y -= speed;
-                    }
-                    if (tempY == 1)
-                    {
-                        Position.y += speed;
-                    }
-                    if (tempX == 2)
-                    {
-                        Position.x -= speed;
-                    }
-                    if (tempX == 1)
-                    {
-                        Position.x += speed;
-                    }
+                    Position.y -= speed;
                 }
+                if (tempY == 1)
+                {
+                    Position.y += speed;
+                }
+                if (tempX == 2)
+                {
+                    Position.x -= speed;
+                }
+                if (tempX == 1)
+                {
+                    Position.x += speed;
+                }
+                
             }
+            //if not then change drection and give a new time
             else
             {
                 NewRand();
@@ -92,10 +96,18 @@ namespace Ranching
             }
             moveTime--;
         }
+        /// <summary>
+        /// if food is not given then remove saturation
+        /// </summary>
         public void Food()
         {
             saturation--;
         }
+        /// <summary>
+        /// if it is feed then give saturation
+        /// </summary>
+        /// <param name="food"></param>
+        /// <returns></returns>
         public int Food(int food)
         {
             food *= 120;
@@ -103,12 +115,16 @@ namespace Ranching
             fatness++;
             return saturation;
         }
+        /// <summary>
+        /// gives money if the animal is not hungry
+        /// </summary>
         public void Produce()
         {
             if(saturation > 0)
             {
                 makingMoney = makingMoneyTemp * yield;
             }
+            //stops making money and becomes hungry
             else
             {
                 makingMoney = 0;
@@ -117,6 +133,9 @@ namespace Ranching
                 hungry = true;
             }
         }
+        /// <summary>
+        /// Draws the animal
+        /// </summary>
         public void Draw()
         {
             rl.DrawTextureEx(texture, Position, 0f, 0.3f, Color.WHITE);
