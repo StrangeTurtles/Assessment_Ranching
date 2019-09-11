@@ -199,7 +199,27 @@ namespace Ranching
                 pigCost = number4;
             }
             reader.Close();
-           
+            //if the cost is zero reset the cost
+            if (cowCost == 0)
+            {
+                Console.WriteLine("ERROR, THE DATA SAVE FILE HAD A INCORRECT INPUT");
+                cowCost = 5;
+            }
+            if (chickenCost == 0)
+            {
+                Console.WriteLine("ERROR, THE DATA SAVE FILE HAD A INCORRECT INPUT");
+                chickenCost = 50;
+            }
+            if (horseCost == 0)
+            {
+                Console.WriteLine("ERROR, THE DATA SAVE FILE HAD A INCORRECT INPUT");
+                horseCost = 500;
+            }
+            if (pigCost == 0)
+            {
+                Console.WriteLine("ERROR, THE DATA SAVE FILE HAD A INCORRECT INPUT");
+                pigCost = 5000;
+            }
 
             //Cow's button
             Button cowButton = new Button();
