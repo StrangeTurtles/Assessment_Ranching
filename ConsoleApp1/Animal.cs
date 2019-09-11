@@ -16,6 +16,7 @@ namespace Ranching
         public int fatness; // how fat it is
         public int saturation; // How full it is
         public bool male; // is it a male
+        public bool hungry = false;
         public string name = "NotListed";
         public float makingMoney;
         public float makingMoneyTemp;
@@ -68,19 +69,19 @@ namespace Ranching
                 {
                     if (tempY == 2)
                     {
-                        Position.y--;
+                        Position.y -= speed;
                     }
                     if (tempY == 1)
                     {
-                        Position.y++;
+                        Position.y += speed;
                     }
                     if (tempX == 2)
                     {
-                        Position.x--;
+                        Position.x -= speed;
                     }
                     if (tempX == 1)
                     {
-                        Position.x++;
+                        Position.x += speed;
                     }
                 }
             }
@@ -113,6 +114,7 @@ namespace Ranching
                 makingMoney = 0;
                 saturation = 0;
                 rl.DrawText("An Animal is hungry", 10, 350, 30, Color.BLACK);
+                hungry = true;
             }
         }
         public void Draw()

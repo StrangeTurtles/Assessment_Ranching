@@ -13,7 +13,7 @@ namespace Ranching
         public Cow()
         {
             age = random.Next(5);
-            speed = random.Next(3, 6);
+            speed = random.Next(2, 4);
             yield = random.Next(1, 2);
             saturation = random.Next(10, 100);
             fatness = random.Next(3, 15);
@@ -83,7 +83,7 @@ namespace Ranching
         public Horse()
         {
             age = random.Next(15);
-            speed = random.Next(3, 12);
+            speed = random.Next(3, 5);
             yield = random.Next(1, 3);
             saturation = random.Next(10, 100);
             fatness = random.Next(3, 15);
@@ -117,7 +117,7 @@ namespace Ranching
         public Pig()
         {
             age = random.Next(5);
-            speed = random.Next(3, 5);
+            speed = random.Next(1, 3);
             yield = random.Next(5, 10);
             saturation = random.Next(10, 100);
             fatness = random.Next(3, 10);

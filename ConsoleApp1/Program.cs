@@ -27,10 +27,7 @@ namespace Ranching
 
             foreach (string line in fileLines)
             {
-                //Cow tmpCow = new Cow();
-                //Chicken tmpChicken = new Chicken();
-                //Horse tmpHorse = new Horse();
-                //Pig tmpPig = new Pig();
+                
                 
                 tmpValues = line.Split(',');
 
@@ -126,6 +123,14 @@ namespace Ranching
             writer.Close();
         }
 
+        static int NewRandNum()
+        {
+            Random random = new Random();
+            int randNum = 0;
+            randNum = random.Next(50, 150);
+            return randNum;
+        }
+
         public static int Main()
         {
             // Initialization
@@ -141,6 +146,7 @@ namespace Ranching
             int howManyHorse = 0;
             int howManyPig = 0;
             int howManyAnimals = 0;
+            int howManyHungry = 0;
 
             int foodCost = 1;
             int cowCost = 5;
@@ -148,8 +154,7 @@ namespace Ranching
             int horseCost = 500;
             int pigCost = 5000;
             
-            //LoadAnimals();
-            //farmAnimals = LoadAnimals();
+            
 
             StreamReader reader = new StreamReader("SaveData.txt");
             while (!reader.EndOfStream)
@@ -177,10 +182,7 @@ namespace Ranching
                 pigCost = number4;
             }
             reader.Close();
-            if(cowCost == 0)
-            {
-
-            }
+           
 
             //Cow's button
             Button cowButton = new Button();
@@ -230,8 +232,7 @@ namespace Ranching
 
             rl.SetTargetFPS(60);
 
-            //LoadAnimals();
-            //farmAnimals = LoadAnimals();
+            
 
             Cow.cowTexture = rl.LoadTexture("cow.png");
             Chicken.chickenTexture = rl.LoadTexture("chicken.png");
@@ -248,7 +249,7 @@ namespace Ranching
                 // Update
                 //----------------------------------------------------------------------------------
                 howManyAnimals = 0;
-                
+                howManyHungry = 0;
                 // TODO: Update your variables here
                 //----------------------------------------------------------------------------------
                 foreach (var i in farmAnimals)
@@ -257,26 +258,23 @@ namespace Ranching
                     i.Food();
                     i.Produce();
                     player.money += (i.makingMoney / 1200);
+                    if(i.hungry)
+                    {
+                        howManyHungry++;
+                    }
                     howManyAnimals++;
                     i.Draw();
                 }
 
-                foodCost = howManyAnimals * 2;
+                foodCost = howManyHungry * 2;
                 howManyAnimals = 0;
+                //Cow
                 cowButton.Update();
                 if (cowButton.buttonAction && player.money >= cowCost)
                 {
                     farmAnimals.Add(new Cow());
                     player.money -= cowCost;
                     cowCost += 1;
-                }
-                //horse
-                horseButton.Update();
-                if (horseButton.buttonAction && player.money >= horseCost)
-                {
-                    farmAnimals.Add(new Horse());
-                    player.money -= horseCost;
-                    horseCost += 50;
                 }
                 //chicken
                 chickenButton.Update();
@@ -285,6 +283,14 @@ namespace Ranching
                     farmAnimals.Add(new Chicken());
                     player.money -= chickenCost;
                     chickenCost += 10;
+                }
+                //horse
+                horseButton.Update();
+                if (horseButton.buttonAction && player.money >= horseCost)
+                {
+                    farmAnimals.Add(new Horse());
+                    player.money -= horseCost;
+                    horseCost += 50;
                 }
                 //pig
                 pigButton.Update();
@@ -299,9 +305,15 @@ namespace Ranching
                 {
                     foreach (var i in farmAnimals)
                     {
-                        i.Food(50);
+                        //NewRandNum();
+                        if (i.hungry)
+                        {
+                            i.Food(NewRandNum());
+                            i.hungry = false;
+                        }
                     }
                     player.money -= foodCost;
+                    foodCost = 0;
                 }
                 sellButton.Update();
                 if(sellButton.buttonAction)
@@ -327,7 +339,6 @@ namespace Ranching
                         if (i.name == "Cow")
                         {
                             howManyCow++;
-                            //Console.WriteLine("hi");
                         }
                     }
                     rl.DrawText($"You have {howManyCow} Cows in the pen", 10, 300, 30, Color.BLACK);
@@ -377,15 +388,17 @@ namespace Ranching
                 rl.BeginDrawing();
 
                 rl.ClearBackground(Color.GREEN);
+                
 
+                //Cow
                 cowButton.Draw();
-                ////horse
-                horseButton.Draw();
-                ////chicken
+                //chicken
                 chickenButton.Draw();
-                ////Pig
+                //horse
+                horseButton.Draw();
+                //Pig
                 pigButton.Draw();
-
+                //Feed 
                 foodButton.Draw();
 
                 sellButton.Draw();
