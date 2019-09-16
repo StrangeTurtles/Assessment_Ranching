@@ -358,7 +358,7 @@ namespace Ranching
                 sellButton.Update();
                 if(sellButton.buttonAction)
                 {
-                    player.money += 0.1;
+                    player.money += 0.1 + (howManyCow * 1.0) + (howManyChicken * 0.1) + (howManyPig * 0.5) + (howManyHorse * 5.0);
                 }
                 //This is for rounding the player's money 
                 //to two places after the decimal
@@ -448,6 +448,7 @@ namespace Ranching
 
                 
                 rl.DrawText($"You have ${tmpmoney}", 10, 10, 30, Color.BLACK);
+                rl.DrawText($"Tap to earn money", 75, 125, 30, Color.BLACK);
                 rl.DrawText($"Cow: ${cowCost}", 600, 275, 30, Color.BLACK);
                 rl.DrawText($"Chicken: ${chickenCost}", 600, 75, 30, Color.BLACK);
                 rl.DrawText($"Horse: ${horseCost}", 600, 375, 30, Color.BLACK);

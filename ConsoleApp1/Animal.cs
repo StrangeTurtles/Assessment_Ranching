@@ -53,7 +53,7 @@ namespace Ranching
                 NewRand();
                 start = false;
             }
-            if (rl.CheckCollisionPointCircle(mousePoint, Position, 5f))
+            if (rl.CheckCollisionCircles(mousePoint,1f, new Vector2(Position.x + 20,Position.y + 20), 10f))
             {
                 if (rl.IsMouseButtonDown(MouseButton.MOUSE_LEFT_BUTTON))
                 {
@@ -108,10 +108,6 @@ namespace Ranching
                     Position.x += speed;
                 }
 
-                if(buttonAction)
-                {
-                    Position = mousePoint;
-                }
             }
             //if not then change drection and give a new time
             else
@@ -120,6 +116,10 @@ namespace Ranching
                 moveTime = random.Next(25, 50);
             }
             moveTime--;
+            if(buttonAction)
+            {
+                Position = new Vector2(mousePoint.x-20,mousePoint.y-20);
+            }
         }
         /// <summary>
         /// if food is not given then remove saturation
@@ -164,6 +164,7 @@ namespace Ranching
         public void Draw()
         {
             rl.DrawTextureEx(texture, Position, 0f, 0.3f, Color.WHITE);
+            //rl.DrawCircle((int) Position.x + 20, (int) Position.y + 20, 5f, Color.RED);
         }
     }
 }
