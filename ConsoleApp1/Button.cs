@@ -33,7 +33,6 @@ namespace Ranching
                 if (rl.IsMouseButtonDown(MouseButton.MOUSE_LEFT_BUTTON))
                 {
                     buttonState = 2;
-                    
                 }
                 else buttonState = 1;
 

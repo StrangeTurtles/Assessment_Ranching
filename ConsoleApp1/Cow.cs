@@ -20,13 +20,13 @@ namespace Ranching
         {
             age = random.Next(5);
             speed = random.Next(1, 3);
-            yield = random.Next(1, 2);
+            yield = random.Next(5, 10);
             saturation = random.Next(10, 100);
             fatness = random.Next(3, 15);
             moveTime = random.Next(25, 50);
             texture = cowTexture;
             saturation *= 120;
-            makingMoneyTemp = 1;
+            makingMoneyTemp = 50;
             name = "Cow";
             textureName = "cow.png";
         }
@@ -70,13 +70,13 @@ namespace Ranching
         {
             age = random.Next(3);
             speed = random.Next(1, 3);
-            yield = random.Next(1, 5);
+            yield = random.Next(1, 2);
             saturation = random.Next(10, 100);
             fatness = random.Next(1, 5);
             moveTime = random.Next(25, 50);
             texture = chickenTexture;
             saturation *= 120;
-            makingMoneyTemp = 10;
+            makingMoneyTemp = 1;
             name = "Chicken";
             textureName = "chicken.png";
         }
@@ -125,7 +125,7 @@ namespace Ranching
             moveTime = random.Next(25, 50);
             texture = horseTexture;
             saturation *= 120;
-            makingMoneyTemp = 50;
+            makingMoneyTemp = 100;
             name = "Horse";
             textureName = "horse.png";
         }
@@ -168,13 +168,13 @@ namespace Ranching
         {
             age = random.Next(5);
             speed = random.Next(1, 3);
-            yield = random.Next(5, 10);
+            yield = random.Next(1, 5);
             saturation = random.Next(10, 100);
             fatness = random.Next(3, 10);
             moveTime = random.Next(25, 50);
             texture = pigTexture;
             saturation *= 120;
-            makingMoneyTemp = 100;
+            makingMoneyTemp = 10;
             name = "Pig";
             textureName = "pig.png";
         }

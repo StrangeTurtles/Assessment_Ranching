@@ -166,10 +166,10 @@ namespace Ranching
             int howManyHungry = 0;
             //Varables that hold the cost
             int foodCost = 1;
-            int cowCost = 5;
-            int chickenCost = 50;
-            int horseCost = 500;
-            int pigCost = 5000;
+            int cowCost = 500;
+            int chickenCost = 5;
+            int horseCost = 5000;
+            int pigCost = 50;
             
             
             //Loads the cost and player money
@@ -203,52 +203,52 @@ namespace Ranching
             if (cowCost == 0)
             {
                 Console.WriteLine("ERROR, THE DATA SAVE FILE HAD A INCORRECT INPUT");
-                cowCost = 5;
+                cowCost = 500;
             }
             if (chickenCost == 0)
             {
                 Console.WriteLine("ERROR, THE DATA SAVE FILE HAD A INCORRECT INPUT");
-                chickenCost = 50;
+                chickenCost = 5;
             }
             if (horseCost == 0)
             {
                 Console.WriteLine("ERROR, THE DATA SAVE FILE HAD A INCORRECT INPUT");
-                horseCost = 500;
+                horseCost = 5000;
             }
             if (pigCost == 0)
             {
                 Console.WriteLine("ERROR, THE DATA SAVE FILE HAD A INCORRECT INPUT");
-                pigCost = 5000;
+                pigCost = 50;
             }
 
-            //Cow's button
-            Button cowButton = new Button();
-            cowButton.Position.x = 600;
-            cowButton.Position.y = 100;
-            cowButton.height = 50;
-            cowButton.width = 100;
-            cowButton.btnBounds = new Rectangle(cowButton.Position.x, cowButton.Position.y, cowButton.width, cowButton.height);
             //chicken's button
             Button chickenButton = new Button();
             chickenButton.Position.x = 600;
-            chickenButton.Position.y = 200;
+            chickenButton.Position.y = 100;
             chickenButton.height = 50;
             chickenButton.width = 100;
             chickenButton.btnBounds = new Rectangle(chickenButton.Position.x, chickenButton.Position.y, chickenButton.width, chickenButton.height);
-            //horse's button
-            Button horseButton = new Button();
-            horseButton.Position.x = 600;
-            horseButton.Position.y = 300;
-            horseButton.height = 50;
-            horseButton.width = 100;
-            horseButton.btnBounds = new Rectangle(horseButton.Position.x, horseButton.Position.y, horseButton.width, horseButton.height);
             //pig's button
             Button pigButton = new Button();
             pigButton.Position.x = 600;
-            pigButton.Position.y = 400;
+            pigButton.Position.y = 200;
             pigButton.height = 50;
             pigButton.width = 100;
             pigButton.btnBounds = new Rectangle(pigButton.Position.x, pigButton.Position.y, pigButton.width, pigButton.height);
+            //Cow's button
+            Button cowButton = new Button();
+            cowButton.Position.x = 600;
+            cowButton.Position.y = 300;
+            cowButton.height = 50;
+            cowButton.width = 100;
+            cowButton.btnBounds = new Rectangle(cowButton.Position.x, cowButton.Position.y, cowButton.width, cowButton.height);
+            //horse's button
+            Button horseButton = new Button();
+            horseButton.Position.x = 600;
+            horseButton.Position.y = 400;
+            horseButton.height = 50;
+            horseButton.width = 100;
+            horseButton.btnBounds = new Rectangle(horseButton.Position.x, horseButton.Position.y, horseButton.width, horseButton.height);
             //feed button
             Button foodButton = new Button();
             foodButton.Position.x = 100;
@@ -312,7 +312,7 @@ namespace Ranching
                 {
                     farmAnimals.Add(new Cow());
                     player.money -= cowCost;
-                    cowCost += 1;
+                    cowCost += 50;
                 }
                 //chicken
                 chickenButton.Update();
@@ -320,7 +320,7 @@ namespace Ranching
                 {
                     farmAnimals.Add(new Chicken());
                     player.money -= chickenCost;
-                    chickenCost += 10;
+                    chickenCost += 1;
                 }
                 //horse
                 horseButton.Update();
@@ -328,7 +328,7 @@ namespace Ranching
                 {
                     farmAnimals.Add(new Horse());
                     player.money -= horseCost;
-                    horseCost += 50;
+                    horseCost += 500;
                 }
                 //pig
                 pigButton.Update();
@@ -336,7 +336,7 @@ namespace Ranching
                 {
                     farmAnimals.Add(new Pig());
                     player.money -= pigCost;
-                    pigCost += 500;
+                    pigCost += 10;
                 }
                 //food
                 foodButton.Update();
@@ -448,10 +448,10 @@ namespace Ranching
 
                 
                 rl.DrawText($"You have ${tmpmoney}", 10, 10, 30, Color.BLACK);
-                rl.DrawText($"Cow: ${cowCost}", 600, 75, 30, Color.BLACK);
-                rl.DrawText($"Chicken: ${chickenCost}", 600, 175, 30, Color.BLACK);
-                rl.DrawText($"Horse: ${horseCost}", 600, 275, 30, Color.BLACK);
-                rl.DrawText($"Pig: ${pigCost}", 600, 375, 30, Color.BLACK);
+                rl.DrawText($"Cow: ${cowCost}", 600, 275, 30, Color.BLACK);
+                rl.DrawText($"Chicken: ${chickenCost}", 600, 75, 30, Color.BLACK);
+                rl.DrawText($"Horse: ${horseCost}", 600, 375, 30, Color.BLACK);
+                rl.DrawText($"Pig: ${pigCost}", 600, 175, 30, Color.BLACK);
                 rl.DrawText($"Feed All: ${foodCost}", 100, 375, 30, Color.BLACK);
                 rl.EndDrawing();
                 //----------------------------------------------------------------------------------

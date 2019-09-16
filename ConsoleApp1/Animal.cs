@@ -9,6 +9,7 @@ namespace Ranching
     
     public class Animal
     {
+        public Vector2 mousePoint = new Vector2();
         public Vector2 Position = new Vector2();
         public int age; // if it gets to old it will die
         public int speed; //How "fast" it can go
@@ -22,6 +23,8 @@ namespace Ranching
         public float makingMoneyTemp;
         public Texture2D texture;
         public string textureName;
+        public bool buttonAction = false;
+        //public  btnBounds;
         Random random = new Random();
         int tempX;
         int tempY;
@@ -29,7 +32,8 @@ namespace Ranching
         bool start = true;
         int screenWidth = 800;
         int screenHeight = 450;
-        
+        int buttonState = 0;
+
         
         /// <summary>
         /// Makes a random int that will be used to deturmen where the animal will move
@@ -41,12 +45,29 @@ namespace Ranching
         }
         public void RunUpdate()
         {
+            mousePoint = rl.GetMousePosition();
+            //buttonAction = false;
             // gives a random deriton to start
-            if(start)
+            if (start)
             {
                 NewRand();
                 start = false;
             }
+            if (rl.CheckCollisionPointCircle(mousePoint, Position, 5f))
+            {
+                if (rl.IsMouseButtonDown(MouseButton.MOUSE_LEFT_BUTTON))
+                {
+                    buttonState = 2;
+                    buttonAction = true;
+                }
+                else buttonState = 1;
+
+                if (rl.IsMouseButtonReleased(MouseButton.MOUSE_LEFT_BUTTON))
+                {
+                    buttonAction = false;
+                }
+            }
+            else buttonState = 0;
             //Screen Wrap
             if (Position.x > screenWidth)
             {
@@ -86,7 +107,11 @@ namespace Ranching
                 {
                     Position.x += speed;
                 }
-                
+
+                if(buttonAction)
+                {
+                    Position = mousePoint;
+                }
             }
             //if not then change drection and give a new time
             else
