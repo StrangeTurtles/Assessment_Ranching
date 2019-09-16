@@ -93,18 +93,22 @@ namespace Ranching
                 
                 if (tempY == 2)
                 {
+                    //up
                     Position.y -= speed;
                 }
                 if (tempY == 1)
                 {
+                    //down
                     Position.y += speed;
                 }
                 if (tempX == 2)
                 {
+                    //left
                     Position.x -= speed;
                 }
                 if (tempX == 1)
                 {
+                    //right
                     Position.x += speed;
                 }
 

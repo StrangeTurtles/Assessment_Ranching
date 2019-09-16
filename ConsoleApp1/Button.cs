@@ -42,15 +42,18 @@ namespace Ranching
                 }
             }
             else buttonState = 0;
-
+            //if nothing is happening then the color is blue
             if(buttonState == 0)
             {
                 myColor = Color.BLUE;
             }
+            //if the mouse is hovering over then the button then the buttons
+            //color is orange
             if (buttonState == 1)
             {
                 myColor = Color.ORANGE;
             }
+            //if the button is clicked then the color is red
             if (buttonState == 2)
             {
                 myColor = Color.RED;
@@ -63,10 +66,11 @@ namespace Ranching
             //    // TODO: Any desired action
             //}
         }
+        /// <summary>
+        /// Draw the button
+        /// </summary>
         public void Draw()
         {
-
-
             rl.DrawRectangle((int)Position.x, (int)Position.y, width, height, myColor);
         }
     }

@@ -171,7 +171,7 @@ namespace Ranching
             int horseCost = 5000;
             int pigCost = 50;
 
-
+            //Checks how many of each animal when they start the game
             foreach (var i in farmAnimals)
             {
                 if (i.name == "Chicken")
@@ -496,7 +496,7 @@ namespace Ranching
                 rl.DrawText($"Chicken: ${chickenCost}", 600, 75, 30, Color.BLACK);
                 rl.DrawText($"Horse: ${horseCost}", 600, 375, 30, Color.BLACK);
                 rl.DrawText($"Pig: ${pigCost}", 600, 175, 30, Color.BLACK);
-                rl.DrawText($"Feed All: ${foodCost}", 100, 375, 30, Color.BLACK);
+                rl.DrawText($"Feed All Hungry Animals: ${foodCost}", 10, 375, 30, Color.BLACK);
                 rl.EndDrawing();
                 //----------------------------------------------------------------------------------
             }
