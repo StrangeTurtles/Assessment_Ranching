@@ -170,8 +170,28 @@ namespace Ranching
             int chickenCost = 5;
             int horseCost = 5000;
             int pigCost = 50;
-            
-            
+
+
+            foreach (var i in farmAnimals)
+            {
+                if (i.name == "Chicken")
+                {
+                    howManyChicken++;
+                }
+                if (i.name == "Cow")
+                {
+                    howManyCow++;
+                }
+                if (i.name == "Horse")
+                {
+                    howManyHorse++;
+                }
+                if (i.name == "Pig")
+                {
+                    howManyPig++;
+                }
+            }
+
             //Loads the cost and player money
             StreamReader reader = new StreamReader("SaveData.txt");
             while (!reader.EndOfStream)
@@ -368,13 +388,36 @@ namespace Ranching
                 tmpmoney = Math.Floor(tmpmoney);
                 tmpmoney /= 100;
 
-                
+
 
                 // Sort
                 //----------------------------------------------------------------------------------
                 //if a key is pressed then show how many animals there are
+                howManyCow = 0;
+                howManyChicken = 0;
+                howManyHorse = 0;
+                howManyPig = 0;
+                foreach (var i in farmAnimals)
+                {
+                    if (i.name == "Chicken")
+                    {
+                        howManyChicken++;
+                    }
+                    if (i.name == "Cow")
+                    {
+                        howManyCow++;
+                    }
+                    if (i.name == "Horse")
+                    {
+                        howManyHorse++;
+                    }
+                    if (i.name == "Pig")
+                    {
+                        howManyPig++;
+                    }
+                }
                 //Cow
-                if(rl.IsKeyDown(KeyboardKey.KEY_C))
+                if (rl.IsKeyDown(KeyboardKey.KEY_C))
                 {
                     howManyCow = 0;
                     foreach(var i in farmAnimals)
